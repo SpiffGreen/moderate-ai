@@ -1,0 +1,22 @@
+{
+  "name": "nude-detection-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve src",
+    "dev": "npx live-server src",
+    "tailwind": "npx tailwindcss -i ./src/index.css -o ./src/output.css --watch"
+  },
+  "keywords": [],
+  "author": "Spiff Jekey-Green",
+  "license": "ISC",
+  "devDependencies": {
+    "postcss": "^8.4.16",
+    "serve": "^14.0.1",
+    "tailwindcss": "^3.1.8"
+  },
+  "dependencies": {
+    "live-server": "^1.1.0"
+  }
+}

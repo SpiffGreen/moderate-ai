@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Moderation System</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/toxicity"></script>
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+  <body class="dark:bg-slate-800 dark:text-white p-3">
+    <div class="text-5xl text-center my-8">Text Classification</div>
+
+    <div class="text-center max-w-sm mx-auto p-2" id="main-container">
+      <textarea
+        placeholder="Enter text"
+        id="userInput"
+        class="w-[100%] min-h-[300px] p-2 object-cover mx-auto rounded-lg text-black outline outline-teal-500 resize-none"
+      ></textarea>
+      <button
+        id="checkBtn"
+        class="rounded-lg p-2 bg-blue-500 block w-1/2 my-3 mx-auto"
+      >
+        Check Toxicity
+      </button>
+      <div class="my-3 text-center" id="result"></div>
+    </div>
+
+    <div id="loader" class="text-center py-12" hidden>
+      <span class="loader"></span>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", init);
+
+      function init() {
+        const checkBtn = document.getElementById("checkBtn");
+        checkBtn.addEventListener("click", checkToxicity);
+      }
+
+      function checkToxicity() {
+        const inp = document.getElementById("userInput");
+        const loader = document.getElementById("loader");
+        const mainContent = document.getElementById("main-container");
+        loader.toggleAttribute("hidden");
+        mainContent.toggleAttribute("hidden");
+        // The minimum prediction confidence.
+        const threshold = 0.9;
+
+        // Load the model. Users optionally pass in a threshold and an array of
+        // labels to include.
+        toxicity.load(threshold).then((model) => {
+          const sentences = [inp.value];
+          model.classify(sentences).then((predictions) => {
+            // `predictions` is an array of objects, one for each prediction head,
+            // that contains the raw probabilities for each input along with the
+            // final prediction in `match` (either `true` or `false`).
+            // If neither prediction exceeds the threshold, `match` is `null`.
+            loader.toggleAttribute("hidden");
+            mainContent.toggleAttribute("hidden");
+            console.log(predictions);
+            predictions.forEach(prediction => {
+              console.log(`${prediction.label}: ${prediction.results[0].match}`);
+            })
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

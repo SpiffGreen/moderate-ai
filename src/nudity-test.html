@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Moderation System</title>
+    <link href="./output.css" rel="stylesheet" />
+    <script type="module" src="./index.js" defer></script>
+    <script src="./scripts/nude.js" defer></script>
+  </head>
+  <body class="dark:bg-slate-800 dark:text-white p-3">
+    <div class="text-5xl text-center my-8">Nudity Detector</div>
+
+    <div class="text-center max-w-sm mx-auto p-2">
+      <img
+        src=""
+        alt="No image yet"
+        id="selectedImage"
+        class="w-[80%] max-h-[400px] object-cover mx-auto rounded-xl"
+      />
+      <label
+        class="block mb-2 text-base font-medium text-gray-900 dark:text-gray-300"
+        for="file_input"
+        >Select an Image</label
+      >
+      <input
+        class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        id="selectInput"
+        name="files"
+        type="file"
+        accept="image/*"
+      />
+      <button id="scan" class="rounded-lg p-2 bg-blue-500 block w-1/2 my-3 mx-auto">
+        Scan
+      </button>
+      <div class="my-3 text-center" id="result"></div>
+    </div>
+  </body>
+</html>
