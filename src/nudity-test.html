@@ -9,7 +9,7 @@
     <script type="module" src="./index.js" defer></script>
     <script src="./scripts/nude.js" defer></script>
   </head>
-  <body class="dark:bg-slate-800 dark:text-white p-3">
+  <body class="p-3">
     <div class="text-5xl text-center my-8">Nudity Detector</div>
 
     <div class="text-center max-w-sm mx-auto p-2">
@@ -20,7 +20,7 @@
         class="w-[80%] max-h-[400px] object-cover mx-auto rounded-xl"
       />
       <label
-        class="block mb-2 text-base font-medium text-gray-900 dark:text-gray-300"
+        class="block mb-2 text-base font-medium text-zinc-700"
         for="file_input"
         >Select an Image</label
       >
@@ -31,7 +31,7 @@
         type="file"
         accept="image/*"
       />
-      <button id="scan" class="rounded-lg p-2 bg-blue-500 block w-1/2 my-3 mx-auto">
+      <button id="scan" class="rounded-lg p-2 bg-blue-500 text-white block w-1/2 my-3 mx-auto">
         Scan
       </button>
       <div class="my-3 text-center" id="result"></div>
